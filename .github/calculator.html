@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .calculator { width: 220px; margin: auto; }
+        input[type="text"] { width: 200px; height: 30px; font-size: 18px; margin-bottom: 10px; text-align: right; }
+        .buttons { display: grid; grid-template-columns: repeat(4, 50px); gap: 5px; }
+        button { height: 40px; font-size: 18px; }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <div class="buttons">
+            <button onclick="append('7')">7</button>
+            <button onclick="append('8')">8</button>
+            <button onclick="append('9')">9</button>
+            <button onclick="append('/')">÷</button>
+            <button onclick="append('4')">4</button>
+            <button onclick="append('5')">5</button>
+            <button onclick="append('6')">6</button>
+            <button onclick="append('*')">×</button>
+            <button onclick="append('1')">1</button>
+            <button onclick="append('2')">2</button>
+            <button onclick="append('3')">3</button>
+            <button onclick="append('-')">−</button>
+            <button onclick="append('0')">0</button>
+            <button onclick="append('.')">.</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="append('+')">+</button>
+            <button onclick="clearDisplay()" style="grid-column: span 4; background: #eee;">C</button>
+        </div>
+    </div>
+    <script>
+        function append(char) {
+            document.getElementById('display').value += char;
+        }
+        function calculate() {
+            try {
+                let result = eval(document.getElementById('display').value);
+                document.getElementById('display').value = result;
+            } catch {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+    </script>
+</body>
+</html>
